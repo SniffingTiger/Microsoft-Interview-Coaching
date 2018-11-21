@@ -10,6 +10,11 @@ namespace Dynamics365_code.Week_2
     {
         public static int Longest_Substring_Without_Repeating_Chars(string input)
         {
+            if (input == null)
+            {
+                return 0;
+            }
+
             int longestSubstringLength = 0;
 
             for (int i = 0; i < input.Length; i++)

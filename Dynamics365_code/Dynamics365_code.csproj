@@ -51,9 +51,11 @@
     <Compile Include="Week 1\ReverseParseMulti_Byte.cs" />
     <Compile Include="Week 2\LongestSubstring.cs" />
     <Compile Include="Week 2\OneAway.cs" />
+    <Compile Include="Week 3\ReturnTwoAddends.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
