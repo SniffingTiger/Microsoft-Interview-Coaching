@@ -8,6 +8,13 @@ namespace Dynamics365_code.Week_3
 {
     public static class ReturnTwoAddends
     {
+        /*
+             Given an array of integers, return two integers such as they add up to a specific target.
+             You may assume that each input would have exactly one solution, and you may not use the same element twice.
+             Ex. Given nums = [2, 7, 11, 15], target = 9,
+                   Because nums[0] + nums[1] = 2 + 7 = 9, return [2, 7]
+        */
+
         public static int[] ReturnTwoAddendsMethod(int[] inputArr, int sum)
         {
             if (inputArr.Length == 1 || inputArr.Length == 0 || inputArr is null)
