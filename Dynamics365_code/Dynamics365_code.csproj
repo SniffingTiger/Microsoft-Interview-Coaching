@@ -52,6 +52,7 @@
     <Compile Include="Week 2\LongestSubstring.cs" />
     <Compile Include="Week 2\OneAway.cs" />
     <Compile Include="Week 3\ReturnTwoAddends.cs" />
+    <Compile Include="Week 3\Sum3.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

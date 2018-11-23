@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Dynamics365_code.Week_3;
+using System.Collections.Generic;
 
 namespace Dynamics365_testunits
 {
@@ -9,6 +10,7 @@ namespace Dynamics365_testunits
     {
         [DataTestMethod]
         [DataRow(1, 2, 3, 4, 5, 6, 7, 13, 6, 7)]
+        [DataRow(-1, -3, 5, 6, 7, 2, 98, -4, -1, -3)]
         public void ReturnTwoAddendsMethod_Correct(int arr1, int arr2, int arr3, int arr4, int arr5, int arr6, int arr7, int inputSum, int result1, int result2)
         {
             int[] inputArr = new int[] { arr1, arr2, arr3, arr4, arr5, arr6, arr7 };
@@ -21,18 +23,16 @@ namespace Dynamics365_testunits
 
         [DataTestMethod]
         [DataRow(1, 2, 3, 4, 5, 6, 7, 15)]
-        public void ReturnTwoAddendsMethod_Returns_Empty_Array(int arr1, int arr2, int arr3, int arr4, int arr5, int arr6, int arr7, int inputSum)
+        public void ReturnTwoAddendsMethod_Returns_Null(int arr1, int arr2, int arr3, int arr4, int arr5, int arr6, int arr7, int inputSum)
         {
             int[] inputArr = new int[] { arr1, arr2, arr3, arr4, arr5, arr6, arr7 };
-            int[] expectedResult = new int[] { };
-
             int[] result = ReturnTwoAddends.ReturnTwoAddendsMethod(inputArr, inputSum);
 
             int[] inputArr2 = new int[] { arr1, arr3 };
             int[] result2 = ReturnTwoAddends.ReturnTwoAddendsMethod(inputArr2, 2);
 
-            CollectionAssert.AreEqual(expectedResult, result);
-            CollectionAssert.AreEqual(expectedResult, result2);
+            CollectionAssert.AreEqual(null, result);
+            CollectionAssert.AreEqual(null, result2);
         }
 
         [TestMethod]
@@ -53,6 +53,18 @@ namespace Dynamics365_testunits
             ReturnTwoAddends.ReturnTwoAddendsMethod(oneLengthArr, 3);
         }
     }
+
+    [TestClass]
+    public class Week3_Tests_Sum3
+    {
+        [DataTestMethod]
+        [DataRow(1, 2, 3, 4, 0, 6)]
+        public void Sum3Method_Returns_Correctly(int arr1, int arr2, int arr3, int arr4, int arr5, int sum)
+        {
+            int[] inputArr = new int[] { arr1, arr2, arr3, arr4, arr5 };
+            List<int[]> expectedResult = new List<int[]> { new int[] { 1, 2, 3 }, new int[] { 0, 2, 4 } };
+
+            CollectionAssert.AreEqual(expectedResult, Sum3.Sum3Method(inputArr, sum));
+        }
+    }
 }
-
-
