@@ -57,20 +57,53 @@ namespace Dynamics365_testunits
     [TestClass]
     public class Week3_Tests_Sum3
     {
-        [DataTestMethod]
-        [DataRow(6, 1, 2, 3, 4, 0, null, null)]
-        //[DataRow(0, 0, -1, 1, 3, -2, 2, -3)]
-        public void Sum3Method_Returns_Correctly(int sum, int arr1, int arr2, int arr3, int arr4, int arr5, int arr6, int arr7)
+        [TestMethod]
+        public void Sum3Method_Returns_Correctly()
         {
-            int[] inputArr = new int[] { arr1, arr2, arr3, arr4, arr5 };
-            List<int[]> expectedResult = new List<int[]> { new int[] { 1, 2, 3 }, new int[] { 0, 2, 4 } };
+            int[] inputArr = new int[] { 1, 2, 3, 4, 0 };
+            const int sum = 6;
+            int[] inputArr2 = new int[] { 0, -1, 1, 3, -2, 2, -3 };
+            const int sum2 = 0;
+
+            List<int[]> expectedResult = new List<int[]> {
+                new int[] { 1, 2, 3 },
+                new int[] { 0, 2, 4 } };
+            List<int[]> expectedResult2 = new List<int[]> {
+                new int[] { -1, 0, 1 },
+                new int[] { -3, 0, 3 },
+                new int[] { -2, 0, 2 },
+                new int[] { -2, -1, 3},
+                new int[] { -3, 1, 2} };
 
             var result = Sum3.Sum3Method(inputArr, sum);
+            var result2 = Sum3.Sum3Method(inputArr2, sum2);
 
             foreach (int[] item in expectedResult)
             {
                 CollectionAssert.AreEqual(item, result[expectedResult.IndexOf(item)]);
             }
+
+            foreach (int[] item in expectedResult2)
+            {
+                CollectionAssert.AreEqual(item, result2[expectedResult2.IndexOf(item)]);
+            }
+        }
+
+        [DataTestMethod]
+        [DataRow(0, 1, 2)]
+        public void Sum3Method_Returns_Null(int sum, int arr1, int arr2)
+        {
+            int[] inputArr = null;
+            int[] inputArr2 = new int[1] { arr1 };
+            int[] inputArr3 = new int[2] { arr1, arr2 };
+
+            var result = Sum3.Sum3Method(inputArr, sum);
+            var result2 = Sum3.Sum3Method(inputArr2, sum);
+            var result3 = Sum3.Sum3Method(inputArr3, sum);
+
+            Assert.AreEqual(null, result);
+            Assert.AreEqual(null, result2);
+            Assert.AreEqual(null, result3);
         }
     }
 }
