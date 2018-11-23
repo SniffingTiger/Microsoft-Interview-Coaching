@@ -58,13 +58,19 @@ namespace Dynamics365_testunits
     public class Week3_Tests_Sum3
     {
         [DataTestMethod]
-        [DataRow(1, 2, 3, 4, 0, 6)]
-        public void Sum3Method_Returns_Correctly(int arr1, int arr2, int arr3, int arr4, int arr5, int sum)
+        [DataRow(6, 1, 2, 3, 4, 0, null, null)]
+        //[DataRow(0, 0, -1, 1, 3, -2, 2, -3)]
+        public void Sum3Method_Returns_Correctly(int sum, int arr1, int arr2, int arr3, int arr4, int arr5, int arr6, int arr7)
         {
             int[] inputArr = new int[] { arr1, arr2, arr3, arr4, arr5 };
             List<int[]> expectedResult = new List<int[]> { new int[] { 1, 2, 3 }, new int[] { 0, 2, 4 } };
 
-            CollectionAssert.AreEqual(expectedResult, Sum3.Sum3Method(inputArr, sum));
+            var result = Sum3.Sum3Method(inputArr, sum);
+
+            foreach (int[] item in expectedResult)
+            {
+                CollectionAssert.AreEqual(item, result[expectedResult.IndexOf(item)]);
+            }
         }
     }
 }
